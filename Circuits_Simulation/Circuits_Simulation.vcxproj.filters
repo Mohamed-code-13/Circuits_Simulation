@@ -33,7 +33,7 @@
     <ClCompile Include="src\Circuit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\LinearAlgebra\Algebra.cpp">
+    <ClCompile Include="src\LinearAlgebra\algebra.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,7 +53,7 @@
     <ClInclude Include="src\include\Circuit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\LinearAlgebra\Algebra.h">
+    <ClInclude Include="src\LinearAlgebra\include\algebra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
