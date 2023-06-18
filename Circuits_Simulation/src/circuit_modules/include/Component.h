@@ -1,5 +1,6 @@
 #pragma once
 #include "Node.h"
+#include "../../LinearAlgebra/include/algebra.h"
 
 class Component
 {
@@ -20,5 +21,6 @@ public:
 	void setTerminal2(Node* term);
 
 	virtual double getVoltageDrop() const = 0;
+	virtual void fillMNA(Vector2D& mat, std::vector<double>& b) const = 0;
 };
 

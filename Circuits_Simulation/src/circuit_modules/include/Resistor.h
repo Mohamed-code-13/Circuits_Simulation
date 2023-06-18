@@ -8,5 +8,7 @@ public:
 
 	double getVoltageDrop() const override;
 	double getCurrent() const;
+
+	void fillMNA(Vector2D& mat, std::vector<double>& b) const override;
 };
 
