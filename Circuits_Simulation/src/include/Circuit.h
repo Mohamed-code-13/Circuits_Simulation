@@ -14,5 +14,7 @@ public:
 	Node* addNode(int id);
 	Resistor* addResistor(double resistance, Node* term1, Node* term2);
 	VoltageSource* addVoltageSource(double volt, Node* term1, Node* term2);
+
+	void simulateCircuit();
 };
 

@@ -13,7 +13,8 @@ public:
 	double get(int i, int j) const;
 	void set(int i, int j, double val);
 
-	std::vector<double> solveEquations(std::vector<double>& b);
+	void solveEquations(std::vector<double>& b);
+	std::vector<double> solveLinearEquations(std::vector<std::vector<double>>& A, std::vector<double>& b);
 
 private:
 	void forwardElimination(std::vector<double>& b);

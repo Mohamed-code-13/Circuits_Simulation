@@ -29,3 +29,20 @@ VoltageSource* Circuit::addVoltageSource(double volt, Node* term1, Node* term2)
 	components.push_back(source);
 	return source;
 }
+
+void Circuit::simulateCircuit()
+{
+	int numNodes = nodes.size();
+
+	Vector2D mat(numNodes, numNodes);
+	std::vector<double> b(numNodes);
+
+	for (Component* comp : components)
+		comp->fillMNA(mat, b);
+
+	mat.solveEquations(b);
+	//std::vector<double> x = mat.solveLinearEquations(mat.matrix, b);
+
+	for (int i = 0; i < numNodes; ++i)
+		nodes[i]->setVolt(b[i]);
+}
