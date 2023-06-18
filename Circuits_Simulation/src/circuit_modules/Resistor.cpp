@@ -10,3 +10,7 @@ double Resistor::getVoltageDrop() const
 	return terminal1->getVolt() - terminal2->getVolt();
 }
 
+double Resistor::getCurrent() const
+{
+	return getVoltageDrop() / getValue();
+}

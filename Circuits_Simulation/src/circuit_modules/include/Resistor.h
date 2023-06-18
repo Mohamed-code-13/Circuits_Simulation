@@ -4,8 +4,9 @@
 class Resistor : public Component
 {
 public:
-	Resistor(double val, Node* term1, Node* term2);
+	Resistor(double val, Node* term1 = nullptr, Node* term2 = nullptr);
 
 	double getVoltageDrop() const override;
+	double getCurrent() const;
 };
 

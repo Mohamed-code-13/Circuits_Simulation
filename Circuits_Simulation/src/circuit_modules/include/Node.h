@@ -1,26 +1,19 @@
 #pragma once
 #include <vector>
-#include "Component.h"
-
-class Component;
 
 class Node
 {
 private:
 	int id;
-	int volt;
-	std::vector<Component*> connectedComponents;
+	double volt;
 
 public:
 	Node(int id);
 
 	int getId() const;
+	
+	double getVolt() const;
 
-	void addComponent(Component* component);
-
-	const std::vector<Component*>& getComponent() const;
-
-	int getVolt() const;
-	void setVolt(int volt);
+	void setVolt(double volt);
 };
 

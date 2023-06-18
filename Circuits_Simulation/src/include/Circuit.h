@@ -9,9 +9,10 @@ private:
 	std::vector<Component*> components;
 
 public:
-	void addNode(Node* node);
-	void addComponent(Component* component);
+	~Circuit();
 
-	bool hasNode(Node* node);
+	Node* addNode(int id);
+	Resistor* addResistor(double resistance, Node* term1, Node* term2);
+	VoltageSource* addVoltageSource(double volt, Node* term1, Node* term2);
 };
 

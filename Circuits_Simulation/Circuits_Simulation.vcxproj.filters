@@ -33,6 +33,9 @@
     <ClCompile Include="src\Circuit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\LinearAlgebra\Algebra.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\circuit_modules\include\Node.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\include\Circuit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LinearAlgebra\Algebra.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

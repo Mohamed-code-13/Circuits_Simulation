@@ -1,29 +1,31 @@
 #include "include/Circuit.h"
 
-void Circuit::addNode(Node* node)
+Circuit::~Circuit()
 {
-	if (!hasNode(node))
-		nodes.push_back(node);
+	for (int i = 0; i < nodes.size(); ++i)
+		delete nodes[i];
+
+	for (int i = 0; i < components.size(); ++i)
+		delete components[i];
 }
 
-void Circuit::addComponent(Component* component)
+Node* Circuit::addNode(int id)
 {
-	Node* term1 = component->getTerminal1();
-	Node* term2 = component->getTerminal2();
-
-	this->components.push_back(component);
-
-	if (!hasNode(term1))
-		nodes.push_back(term1);
-
-	if (!hasNode(term2))
-		nodes.push_back(term2);
+	Node* node = new Node(id);
+	nodes.push_back(node);
+	return node;
 }
 
-bool Circuit::hasNode(Node* node)
+Resistor* Circuit::addResistor(double resistance, Node* term1, Node* term2)
 {
-	for (Node* n : nodes)
-		if (node->getId() == n->getId())
-			return true;
-	return false;
+	Resistor* res = new Resistor(resistance, term1, term2);
+	components.push_back(res);
+	return res;
+}
+
+VoltageSource* Circuit::addVoltageSource(double volt, Node* term1, Node* term2)
+{
+	VoltageSource* source = new VoltageSource(volt, term1, term2);
+	components.push_back(source);
+	return source;
 }
