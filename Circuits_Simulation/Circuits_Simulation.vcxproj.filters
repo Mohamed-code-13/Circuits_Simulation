@@ -36,6 +36,9 @@
     <ClCompile Include="src\LinearAlgebra\algebra.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\ParseFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\circuit_modules\include\Node.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\LinearAlgebra\include\algebra.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\ParseFile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include "../circuit_modules/include/Resistor.h"
 #include "../circuit_modules/include/VoltageSource.h"
 
@@ -16,5 +17,7 @@ public:
 	VoltageSource* addVoltageSource(double volt, Node* term1, Node* term2);
 
 	void simulateCircuit();
+
+	void printResult();
 };
 

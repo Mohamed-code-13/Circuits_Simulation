@@ -1,9 +1,31 @@
 #include <iostream>
 #include "include/Circuit.h"
+#include "include/ParseFile.h"
 #include "LinearAlgebra/include/algebra.h"
+#include <SFML/Graphics.hpp>
 
 int main()
 {
+    ParseFile file;
+    Circuit circuit = file.getCircuit("./Data/circuit_netlist/ex1.txt");
+
+    circuit.simulateCircuit();
+
+    circuit.printResult();
+
+    return 0;
+}
+/*
+int main()
+{
+    sf::RenderWindow window(sf::VideoMode(1024, 1024), "Circuit Simulation");
+
+    while (window.isOpen())
+    {
+        window.clear();
+        window.display();
+    }
+
     // Create the circuit
     Circuit circuit;
 
@@ -34,3 +56,4 @@ int main()
     std::cout << "Resistor 3 voltage: " << r3->getVoltageDrop() << " V\n";
 	return 0;
 }
+*/

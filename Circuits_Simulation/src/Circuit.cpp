@@ -41,8 +41,18 @@ void Circuit::simulateCircuit()
 		comp->fillMNA(mat, b);
 
 	mat.solveEquations(b);
-	//std::vector<double> x = mat.solveLinearEquations(mat.matrix, b);
 
 	for (int i = 0; i < numNodes; ++i)
 		nodes[i]->setVolt(b[i]);
+}
+
+void Circuit::printResult()
+{
+	for (Component* comp : components)
+	{
+		if (Resistor* resistor = dynamic_cast<Resistor*>(comp))
+		{
+			std::cout << "The Voltage Drop on Resistor " << resistor->getValue() << " ohm is: " << resistor->getVoltageDrop() << " V\n";
+		}
+	}
 }
