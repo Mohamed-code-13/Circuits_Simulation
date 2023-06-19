@@ -26,16 +26,6 @@ void Vector2D::forwardElimination(std::vector<double>& b)
 {
 	for (int i = 0; i < rows; ++i)
 	{
-		/*int pivotRow = i;
-		for (int j = i + 1; j < rows; ++j)
-			if (std::abs(matrix[j][i]) > std::abs(matrix[pivotRow][i]))
-				pivotRow = j;
-
-
-		std::swap(matrix[i], matrix[pivotRow]);
-		std::swap(b[i], b[pivotRow]);
-        */
-
 		makePivotOne(b, i);
 		elimination(b, i);
 	}

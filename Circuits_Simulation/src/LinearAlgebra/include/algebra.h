@@ -3,7 +3,7 @@
 
 class Vector2D
 {
-public:
+private:
 	int rows, cols;
 	std::vector<std::vector<double>> matrix;
 
