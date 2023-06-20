@@ -11,17 +11,19 @@ SimulationState::SimulationState(std::shared_ptr<AppData> data)
 	m_isResistor = false;
 	m_mouseTexture = nullptr;
 	m_wires = nullptr;
-	resistors = nullptr;
+	m_compsText = nullptr;
 }
 
 SimulationState::~SimulationState()
 {
-	delete resistors;
+	delete m_compsText;
 	delete m_mouseTexture;
 }
 
 void SimulationState::Init()
 {
+	this->m_data->assets.LoadFont(FONT_FILEPATH);
+
 	this->m_data->assets.LoadTexture("Simulation BackGround", SIMULATION_BACKGROUND_FILEPATH);
 	this->m_data->assets.LoadTexture("Battery Vertical Button", BATTERY_VERTICAL_BUTTON_FILEPATH);
 	this->m_data->assets.LoadTexture("Battery Horizontal Button", BATTERY_HORIZONTAL_BUTTON_FILEPATH);
@@ -47,7 +49,7 @@ void SimulationState::Init()
 	m_resistorHorizontalButton.setPosition(20, 270);
 	m_simulate.setPosition(20, 650);
 
-	resistors = new ResistorTexture(m_data);
+	m_compsText = new ComponentTexture(m_data);
 	m_wires = new Wire(m_data);
 	m_holding = false;
 }
@@ -114,6 +116,12 @@ void SimulationState::HandleInput()
 		{
 			m_holding = false;
 
+			sf::Text valueText;
+			valueText.setFont(m_data->assets.GetFont());
+			valueText.setCharacterSize(22);
+			valueText.setFillColor(sf::Color::Black);
+			// valueText.setOrigin(valueText.getGlobalBounds().width / 2, valueText.getGlobalBounds().height/ 2);
+
 			sf::Sprite node1, node2;
 			node1.setTexture(m_data->assets.GetTexture("Node"));
 			node2.setTexture(m_data->assets.GetTexture("Node"));
@@ -124,13 +132,17 @@ void SimulationState::HandleInput()
 			float h = m_mouseTexture->getGlobalBounds().height;
 			if (m_isHorizontal)
 			{
-				node1.setPosition(x, y + h / 2 - node1.getGlobalBounds().height / 2);
-				node2.setPosition(x + w, y + h / 2 - node1.getGlobalBounds().height / 2);
+				node1.setPosition(x + w, y + h / 2 - node1.getGlobalBounds().height / 2);
+				node2.setPosition(x, y + h / 2 - node1.getGlobalBounds().height / 2);
+
+				valueText.setPosition(x + w / 2, y - h / 2);
 			}
 			else
 			{
 				node1.setPosition(x + w / 2 - node1.getGlobalBounds().width / 2, y);
 				node2.setPosition(x + w / 2 - node1.getGlobalBounds().width / 2, y + h);
+
+				valueText.setPosition(x + w + valueText.getGlobalBounds().width, y + h / 2);
 			}
 			
 			if (m_isResistor)
@@ -143,6 +155,8 @@ void SimulationState::HandleInput()
 				Node* node2 = circuit.addNode(numNodes++);
 				Resistor* resistor = circuit.addResistor(value, node1, node2);
 				m_components.push_back(resistor);
+
+				valueText.setString(std::to_string(value / 1000.0).substr(0, 4) + " k");
 			}
 			else
 			{
@@ -154,13 +168,16 @@ void SimulationState::HandleInput()
 				Node* node2 = circuit.addNode(numNodes++);
 				VoltageSource* source = circuit.addVoltageSource(value, node1, node2);
 				m_components.push_back(source);
+
+				valueText.setString(std::to_string(value).substr(0, 4) + " V");
 			}
 
-			resistors->AddResistor({ *m_mouseTexture, node1, node2 });
+			m_valuesTextures.push_back(valueText);
+			m_compsText->AddComponent({ *m_mouseTexture, node1, node2 });
 		}
 		else if (!m_holding && sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			std::vector<std::vector<sf::Sprite>> comps = resistors->GetResistors();
+			std::vector<std::vector<sf::Sprite>> comps = m_compsText->GetResistors();
 			for (int i = 0; i < comps.size(); ++i)
 			{
 				for (int j = 1; j < comps[i].size(); ++j)
@@ -236,14 +253,16 @@ void SimulationState::Draw(float dt)
 	this->m_data->window.draw(m_resistorHorizontalButton);
 	this->m_data->window.draw(m_simulate);
 
-	if (this->resistors)
-		this->resistors->DrawResistors();
+	if (this->m_compsText)
+		this->m_compsText->DrawResistors();
 	if (this->m_wires)
 		this->m_wires->DrawWires();
 
 	if (m_holding)
 		this->m_data->window.draw(*m_mouseTexture);
 
+	for (sf::Text& t : m_valuesTextures)
+		this->m_data->window.draw(t);
 
 	this->m_data->window.display();
 }

@@ -5,6 +5,8 @@
 
 #define SPLASH_SCREEN_TIME 3.0f
 
+#define FONT_FILEPATH "Data/Font/oswald.ttf"
+
 #define SPLASH_BACKGROUND_FILEPATH "Data/images/SplashBackGround.png"
 #define MAIN_MENU_FILEPATH "Data/images/mainMenu.png"
 #define SIMULATION_BACKGROUND_FILEPATH "Data/images/simulationBackGround2.png"

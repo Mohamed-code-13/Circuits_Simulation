@@ -23,7 +23,8 @@ private:
 	sf::Sprite m_resistorHorizontalButton;
 	sf::Sprite m_Node;
 	sf::Sprite m_simulate;
-	ResistorTexture* resistors;
+	ComponentTexture* m_compsText;
+	std::vector<sf::Text> m_valuesTextures;
 	Wire* m_wires;
 	sf::Vertex wire[2];
 	sf::Sprite* m_mouseTexture;

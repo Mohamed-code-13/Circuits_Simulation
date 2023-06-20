@@ -1,11 +1,11 @@
 #include "include/ResistorTexture.h"
 
-ResistorTexture::ResistorTexture(std::shared_ptr<AppData> data)
+ComponentTexture::ComponentTexture(std::shared_ptr<AppData> data)
 	: m_data(data)
 {
 }
 
-void ResistorTexture::DrawResistors()
+void ComponentTexture::DrawResistors()
 {
 	for (int i = 0; i < resistorsSprites.size(); ++i)
 	{
@@ -14,12 +14,12 @@ void ResistorTexture::DrawResistors()
 	}
 }
 
-void ResistorTexture::AddResistor(std::vector<sf::Sprite> resistor)
+void ComponentTexture::AddComponent(std::vector<sf::Sprite> resistor)
 {
 	resistorsSprites.push_back(resistor);
 }
 
-std::vector<std::vector<sf::Sprite>>& ResistorTexture::GetResistors()
+std::vector<std::vector<sf::Sprite>>& ComponentTexture::GetResistors()
 {
 	return resistorsSprites;
 }
