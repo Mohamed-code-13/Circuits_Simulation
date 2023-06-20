@@ -175,6 +175,7 @@
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\circuit_modules\VoltageSource.cpp" />
     <ClCompile Include="src\LinearAlgebra\algebra.cpp" />
+    <ClCompile Include="src\GUI\Wire.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GUI\include\ResistorTexture.h" />
@@ -194,6 +195,7 @@
     <ClInclude Include="src\circuit_modules\include\Node.h" />
     <ClInclude Include="src\circuit_modules\include\VoltageSource.h" />
     <ClInclude Include="src\LinearAlgebra\include\algebra.h" />
+    <ClInclude Include="src\GUI\include\Wire.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

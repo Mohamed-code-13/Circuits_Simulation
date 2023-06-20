@@ -7,11 +7,12 @@ class ResistorTexture
 {
 private:
 	std::shared_ptr<AppData> m_data;
-	std::vector<sf::Sprite> resistorsSprites;
+	std::vector<std::vector<sf::Sprite>> resistorsSprites;
 
 public:
-	ResistorTexture(std::shared_ptr<AppData> m_data);
+	ResistorTexture(std::shared_ptr<AppData> data);
 	void DrawResistors();
-	void AddResistor(sf::Sprite resistor);
+	void AddResistor(std::vector<sf::Sprite> resistor);
+	std::vector<std::vector<sf::Sprite>>& GetResistors();
 };
 

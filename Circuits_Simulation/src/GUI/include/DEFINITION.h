@@ -23,3 +23,7 @@
 
 #define RESISTOR_HORIZONTAL_FILEPATH "Data/images/resistorHorizontal.png"
 #define RESISTOR_VERTICAL_FILEPATH "Data/images/resistorVertical.png"
+
+#define NODE_FILEPATH "Data/images/node.png"
+
+#define SIMULATE_BUTTON_FILEPATH "Data/images/simulate.png"
