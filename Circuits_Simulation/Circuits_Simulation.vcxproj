@@ -159,6 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GUI\ResistorTexture.cpp" />
     <ClCompile Include="src\GUI\SimulationState.cpp" />
     <ClCompile Include="src\GUI\MainMenuState.cpp" />
     <ClCompile Include="src\GUI\SplashState.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="src\LinearAlgebra\algebra.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GUI\include\ResistorTexture.h" />
     <ClInclude Include="src\GUI\include\SimulationState.h" />
     <ClInclude Include="src\GUI\include\MainMenuState.h" />
     <ClInclude Include="src\GUI\include\SplashState.h" />

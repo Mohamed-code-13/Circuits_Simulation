@@ -60,6 +60,9 @@
     <ClCompile Include="src\GUI\SimulationState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\ResistorTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\circuit_modules\include\Node.h">
@@ -108,6 +111,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GUI\include\SimulationState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GUI\include\ResistorTexture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
